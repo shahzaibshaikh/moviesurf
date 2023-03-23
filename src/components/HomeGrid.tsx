@@ -19,6 +19,13 @@ function HomeGrid(): JSX.Element {
           <HomeCard key={item.imdbID} Poster={item.Poster} Title={item.Title} />
         ))}
       </SimpleGrid>
+
+      <SimpleGrid columns={{ sm: 2, md: 3, lg: 4, xl: 5 }} gap={6} marginTop={6}>
+        {showData?.Search?.map((item: any) => (
+          <HomeCard key={item.imdbID} Poster={item.Poster} Title={item.Title} />
+        ))}
+      </SimpleGrid>
+
       <hr className='line' />
     </Box>
   );

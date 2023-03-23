@@ -5,7 +5,7 @@ import apiClient from '../services/api-client';
 
 function useShows() {
   const dispatch = useDispatch();
-  const { loading, error, data } = useSelector((state: any) => state.movies);
+  const { loading, error, data } = useSelector((state: any) => state.shows);
   const API_KEY = import.meta.env.VITE_API_KEY;
   const showText = 'John';
 
