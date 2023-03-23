@@ -11,10 +11,22 @@
   padding: 10px;
   color: #202020;
   padding-left: 40px;
-
-  width: 100%;
+  width: 500px;
 }
 
 .search-input::placeholder {
   color: #202020;
+}
+
+@media (max-width: 800px) {
+  .search-input {
+    width: 100%;
+  }
+}
+
+/* Horizontal line styles */
+.line {
+  margin-top: 80px;
+  margin-bottom: 40px;
+  background: #121212;
 }

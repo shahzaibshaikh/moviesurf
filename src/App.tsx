@@ -1,4 +1,5 @@
 import { Grid, GridItem } from '@chakra-ui/react';
+import HomeGrid from './components/HomeGrid';
 import Navbar from './components/Navbar';
 function App(): JSX.Element {
   return (
@@ -6,7 +7,9 @@ function App(): JSX.Element {
       <GridItem area='nav'>
         <Navbar />
       </GridItem>
-      <GridItem area='main'>Main</GridItem>
+      <GridItem area='main'>
+        <HomeGrid />
+      </GridItem>
     </Grid>
   );
 }
