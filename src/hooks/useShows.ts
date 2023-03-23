@@ -3,18 +3,17 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setData, setError, setLoading } from '../redux/slices/showsSlice';
 import apiClient from '../services/api-client';
 
-function useShows() {
+function useShows(searchQuery: string) {
   const dispatch = useDispatch();
   const { loading, error, data } = useSelector((state: any) => state.shows);
   const API_KEY = import.meta.env.VITE_API_KEY;
-  const showText = 'John';
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         dispatch(setLoading(true));
         const response = await apiClient.get(
-          `?apiKey=${API_KEY}&s=${showText}&type=series`
+          `?apiKey=${API_KEY}&s=${searchQuery}&type=series`
         );
         dispatch(setData(response.data));
         dispatch(setLoading(false));
@@ -25,7 +24,7 @@ function useShows() {
       }
     };
     fetchData();
-  }, [dispatch]);
+  }, [dispatch, searchQuery]);
 
   return { data, error, loading };
 }

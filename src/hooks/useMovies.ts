@@ -3,18 +3,17 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setData, setError, setLoading } from '../redux/slices/movieSlice';
 import apiClient from '../services/api-client';
 
-function useMovies() {
+function useMovies(searchQuery: string) {
   const dispatch = useDispatch();
   const { loading, error, data } = useSelector((state: any) => state.movies);
   const API_KEY = import.meta.env.VITE_API_KEY;
-  const movieText = 'John';
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         dispatch(setLoading(true));
         const response = await apiClient.get(
-          `?apiKey=${API_KEY}&s=${movieText}&type=movie`
+          `?apiKey=${API_KEY}&s=${searchQuery}&type=movie`
         );
         dispatch(setData(response.data));
         dispatch(setLoading(false));
@@ -25,7 +24,7 @@ function useMovies() {
       }
     };
     fetchData();
-  }, [dispatch]);
+  }, [dispatch, searchQuery]);
 
   return { data, error, loading };
 }
