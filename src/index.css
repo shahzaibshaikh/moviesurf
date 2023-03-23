@@ -2,3 +2,19 @@
   padding: 0;
   margin: 0;
 }
+
+/* Search Input Styles */
+.search-input {
+  border-radius: 20px;
+  background: white;
+  font-size: 13px;
+  padding: 10px;
+  color: #202020;
+  padding-left: 40px;
+
+  width: 100%;
+}
+
+.search-input::placeholder {
+  color: #202020;
+}
