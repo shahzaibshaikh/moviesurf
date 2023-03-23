@@ -3,7 +3,7 @@ import { useState } from 'react';
 import HomeGrid from './components/HomeGrid';
 import Navbar from './components/Navbar';
 function App(): JSX.Element {
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState('John');
   return (
     <Grid templateAreas={`'nav' 'main'`}>
       <GridItem area='nav'>

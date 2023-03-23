@@ -23,7 +23,7 @@ function HomeGrid({ searchQuery }: HomeGridProps): JSX.Element {
   return (
     <Box padding='32px' marginTop={16}>
       {movieLoading && <h2>Loading...</h2>}
-      {movieData.Search && (
+      {movieData?.Search && (
         <Heading fontSize={28} marginBottom={4}>
           Movies
         </Heading>
@@ -34,7 +34,7 @@ function HomeGrid({ searchQuery }: HomeGridProps): JSX.Element {
         ))}
       </SimpleGrid>
 
-      {showData.Search && (
+      {showData?.Search && (
         <Heading fontSize={28} marginBottom={4} marginTop={8}>
           TV Shows
         </Heading>
