@@ -1,8 +1,11 @@
 import { SimpleGrid, Box, Heading } from '@chakra-ui/react';
+import { Link } from 'react-router-dom';
 import HomeCard from './HomeCard';
 import SkeletonCard from './SkeletonCard';
 import useMovies from '../hooks/useMovies';
 import useShows from '../hooks/useShows';
+import { MovieResults, MovieState } from '../redux/slices/movieSlice';
+import { ShowState } from '../redux/slices/showsSlice';
 
 interface HomeGridProps {
   searchQuery: string;
@@ -15,13 +18,13 @@ function HomeGrid({ searchQuery }: HomeGridProps): JSX.Element {
     loading: movieLoading,
     error: movieError,
     data: movieData
-  } = useMovies(searchQuery);
+  }: MovieState = useMovies(searchQuery);
 
   const {
     loading: showLoading,
     error: showError,
     data: showData
-  } = useShows(searchQuery);
+  }: ShowState = useShows(searchQuery);
 
   return (
     <Box padding='32px' marginTop={16}>
@@ -37,7 +40,12 @@ function HomeGrid({ searchQuery }: HomeGridProps): JSX.Element {
       )}
       <SimpleGrid columns={{ sm: 2, md: 3, lg: 4, xl: 5 }} gap={6}>
         {movieData?.Search?.map((item: any) => (
-          <HomeCard key={item.imdbID} Poster={item.Poster} Title={item.Title} />
+          <HomeCard
+            key={item.imdbID}
+            imdbID={item.imdbID}
+            Poster={item.Poster}
+            Title={item.Title}
+          />
         ))}
       </SimpleGrid>
 
@@ -53,7 +61,12 @@ function HomeGrid({ searchQuery }: HomeGridProps): JSX.Element {
       )}
       <SimpleGrid columns={{ sm: 2, md: 3, lg: 4, xl: 5 }} gap={6} marginTop={6}>
         {showData?.Search?.map((item: any) => (
-          <HomeCard key={item.imdbID} Poster={item.Poster} Title={item.Title} />
+          <HomeCard
+            key={item.imdbID}
+            imdbID={item.imdbID}
+            Poster={item.Poster}
+            Title={item.Title}
+          />
         ))}
       </SimpleGrid>
 
