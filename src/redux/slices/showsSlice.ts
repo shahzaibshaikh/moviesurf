@@ -1,7 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-
 // Interfaces
-interface MovieData {
+interface ShowData {
   Title: string;
   Year: string;
   Poster: string;
@@ -14,19 +13,19 @@ export interface Error {
   Error: string;
 }
 
-export interface MovieResults {
-  Search: MovieData[];
+export interface ShowResults {
+  Search: ShowData[];
   totalResults: string;
   Response: string;
 }
 
-export interface MovieState {
+export interface ShowState {
   loading: boolean;
   error: Error | null;
-  data: MovieResults | null;
+  data: ShowResults | null;
 }
 
-const initialState: MovieState = {
+const initialState: ShowState = {
   loading: false,
   error: null,
   data: null
@@ -34,8 +33,8 @@ const initialState: MovieState = {
 
 // Slices
 
-const movieSlice = createSlice({
-  name: 'movies',
+const showsSlice = createSlice({
+  name: 'shows',
   initialState,
   reducers: {
     setLoading: (state, action: PayloadAction<boolean>) => {
@@ -44,11 +43,11 @@ const movieSlice = createSlice({
     setError: (state, action: PayloadAction<Error>) => {
       state.error = action.payload;
     },
-    setData: (state, action: PayloadAction<MovieResults>) => {
+    setData: (state, action: PayloadAction<ShowResults>) => {
       state.data = action.payload;
     }
   }
 });
 
-export const { setLoading, setError, setData } = movieSlice.actions;
-export default movieSlice.reducer;
+export const { setLoading, setError, setData } = showsSlice.actions;
+export default showsSlice.reducer;
