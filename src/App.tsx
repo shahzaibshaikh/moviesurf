@@ -6,6 +6,7 @@ import ItemDetail from './components/ItemDetail';
 import Navbar from './components/Navbar';
 function App(): JSX.Element {
   const [searchQuery, setSearchQuery] = useState('John');
+
   return (
     <Grid templateAreas={`'nav' 'main'`}>
       <GridItem area='nav'>
