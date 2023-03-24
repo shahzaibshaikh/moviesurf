@@ -1,6 +1,7 @@
 import { Heading, HStack, Image, Card, CardBody, Text } from '@chakra-ui/react';
 import { ItemData } from '../redux/slices/itemDetailSlice';
 import IMDBScore from './IMDBScore';
+import ItemDetailLanguage from './ItemDetailLanguage';
 
 interface ItemDetailProps {
   data?: ItemData;
@@ -22,11 +23,9 @@ function ItemDetailCard({ data }: ItemDetailProps) {
         />
         <CardBody alignSelf='flex-start'>
           <Heading marginBottom={4}>{data?.Title}</Heading>
+          <IMDBScore score={data?.imdbRating} />
+          <ItemDetailLanguage language={data?.Language} />
           <Text marginBottom={4}>{data?.Plot}</Text>
-          <HStack>
-            <Text fontWeight={700}>IMDB:</Text>
-            <IMDBScore score={data?.imdbRating} />
-          </HStack>
         </CardBody>
       </HStack>
     </Card>

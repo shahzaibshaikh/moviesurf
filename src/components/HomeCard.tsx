@@ -1,4 +1,12 @@
-import { Card, CardBody, Heading, Image, LinkBox, LinkOverlay } from '@chakra-ui/react';
+import {
+  Card,
+  CardBody,
+  Heading,
+  Image,
+  LinkBox,
+  Box,
+  LinkOverlay
+} from '@chakra-ui/react';
 import { Link as ReactLink } from 'react-router-dom';
 
 interface HomeCard {
