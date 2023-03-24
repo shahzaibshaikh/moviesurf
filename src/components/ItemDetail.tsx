@@ -7,7 +7,7 @@ import { IoChevronBackSharp } from 'react-icons/io5';
 import ItemDetailCard from './ItemDetailCard';
 
 function ItemDetail() {
-  const { loading, error, data } = useDetail<ItemState>();
+  const { loading, error, data } = useDetail();
   return (
     <Box padding='32px' marginTop={16}>
       <LinkOverlay as={ReactLink} to='/'>

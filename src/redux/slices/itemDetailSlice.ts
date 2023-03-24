@@ -1,6 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 // Interfaces
+interface Ratings {
+  Source: string;
+  Value: string;
+}
 export interface ItemData {
   Title: string;
   Year: string;
@@ -9,11 +13,14 @@ export interface ItemData {
   Type: string;
   imdbRating: string;
   Metascore: string;
+  Actors: string;
   Awards: string;
   Plot: string;
   Language: string;
   Genre: string;
   Director: string;
+  Released: string;
+  Ratings: Ratings[];
 }
 
 export interface Error {

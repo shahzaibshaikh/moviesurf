@@ -1,7 +1,12 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { setData, setError, setLoading } from '../redux/slices/itemDetailSlice';
+import {
+  ItemState,
+  setData,
+  setError,
+  setLoading
+} from '../redux/slices/itemDetailSlice';
 import apiClient from '../services/api-client';
 
 function useDetail<ItemState>() {

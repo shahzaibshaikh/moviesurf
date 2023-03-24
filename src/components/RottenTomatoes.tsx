@@ -1,17 +1,17 @@
 import { Badge, HStack, Text } from '@chakra-ui/react';
-import { FaImdb } from 'react-icons/fa';
+import { SiRottentomatoes } from 'react-icons/si';
 
-interface IMDBScoreProps {
+interface RottenTomatoesScoreProps {
   score?: string;
 }
 
-function IMDBScore({ score }: IMDBScoreProps) {
+function RottenTomatoes({ score }: RottenTomatoesScoreProps) {
   let color;
   if (!score) return <></>;
   if (score) {
-    if (parseInt(score) >= 7) {
+    if (parseInt(score) >= 80) {
       color = 'green';
-    } else if (parseInt(score) >= 5) {
+    } else if (parseInt(score) >= 60) {
       color = 'yellow';
     } else {
       color = 'red';
@@ -19,7 +19,7 @@ function IMDBScore({ score }: IMDBScoreProps) {
   }
   return (
     <HStack>
-      <FaImdb color='yellow' size={22} />
+      <SiRottentomatoes color='red' size={20} />
       <Badge fontSize={14} colorScheme={color} borderRadius={4}>
         {score}
       </Badge>
@@ -27,4 +27,4 @@ function IMDBScore({ score }: IMDBScoreProps) {
   );
 }
 
-export default IMDBScore;
+export default RottenTomatoes;
