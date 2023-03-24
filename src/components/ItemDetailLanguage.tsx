@@ -6,7 +6,7 @@ interface DetailLanguageProps {
 
 function ItemDetailLanguage({ language }: DetailLanguageProps) {
   return (
-    <HStack marginBottom={4}>
+    <HStack>
       <Text fontWeight={700}>Languages: </Text>
       <Text>{language}</Text>
     </HStack>

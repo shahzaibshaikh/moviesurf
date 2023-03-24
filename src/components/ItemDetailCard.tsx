@@ -4,6 +4,7 @@ import IMDBScore from './IMDBScore';
 import ItemDetailActors from './ItemDetailActors';
 import ItemDetailDirector from './ItemDetailDirector';
 import ItemDetailLanguage from './ItemDetailLanguage';
+import ItemDetailRelease from './ItemDetailRelease';
 import RottenTomatoes from './RottenTomatoes';
 
 interface ItemDetailProps {
@@ -33,6 +34,7 @@ function ItemDetailCard({ data }: ItemDetailProps) {
           <ItemDetailDirector director={data?.Director} />
           <ItemDetailActors actors={data?.Actors} />
           <ItemDetailLanguage language={data?.Language} />
+          <ItemDetailRelease date={data?.Released} />
           <Text marginBottom={4}>{data?.Plot}</Text>
         </CardBody>
       </HStack>
