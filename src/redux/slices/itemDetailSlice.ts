@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 // Interfaces
-interface ItemData {
+export interface ItemData {
   Title: string;
   Year: string;
   Poster: string;

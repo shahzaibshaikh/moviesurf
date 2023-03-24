@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { setData, setError, setLoading } from '../redux/slices/itemDetailSlice';
 import apiClient from '../services/api-client';
 
-function useDetail() {
+function useDetail<ItemState>() {
   const dispatch = useDispatch();
   const { imdbID } = useParams();
   const { loading, error, data } = useSelector((state: any) => state.itemDetail);
