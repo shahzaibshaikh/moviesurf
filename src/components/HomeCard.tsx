@@ -19,7 +19,7 @@ function HomeCard({ Poster, Title, imdbID }: HomeCard): JSX.Element {
       >
         <Image src={Poster} borderRadius={8} boxShadow='0 10px 12px rgba(0, 0, 0, .3)' />
         <CardBody padding={0} marginTop={4}>
-          <Heading size='1xl' marginBottom={1}>
+          <Heading fontSize={22} marginBottom={1}>
             <LinkOverlay as={ReactLink} to={`/${imdbID}`}>
               {Title}
             </LinkOverlay>

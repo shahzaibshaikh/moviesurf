@@ -3,7 +3,8 @@ import HomeCard from './HomeCard';
 import SkeletonCard from './SkeletonCard';
 import { MovieState } from '../redux/slices/movieSlice';
 import { ShowState } from '../redux/slices/showsSlice';
-import useData from '../hooks/useData';
+import useShows from '../hooks/useShows';
+import useMovies from '../hooks/useMovies';
 
 interface HomeGridProps {
   searchQuery: string;
@@ -16,13 +17,13 @@ function HomeGrid({ searchQuery }: HomeGridProps): JSX.Element {
     loading: movieLoading,
     error: movieError,
     data: movieData
-  }: MovieState = useData(searchQuery, 'movie');
+  }: MovieState = useMovies(searchQuery);
 
   const {
     loading: showLoading,
     error: showError,
     data: showData
-  }: ShowState = useData(searchQuery, 'series');
+  }: ShowState = useShows(searchQuery);
 
   return (
     <Box padding='32px' marginTop={16}>
