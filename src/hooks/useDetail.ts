@@ -1,10 +1,12 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setData, setError, setLoading } from '../redux/slices/movieSlice';
+import { useParams } from 'react-router-dom';
+import { setData, setError, setLoading } from '../redux/slices/itemDetailSlice';
 import apiClient from '../services/api-client';
 
-function useMovies(searchQuery: string) {
+function useDetail() {
   const dispatch = useDispatch();
+  const { imdbID } = useParams();
   const { loading, error, data } = useSelector((state: any) => state.movies);
   const API_KEY = import.meta.env.VITE_API_KEY;
 
@@ -12,9 +14,7 @@ function useMovies(searchQuery: string) {
     const fetchData = async () => {
       try {
         dispatch(setLoading(true));
-        const response = await apiClient.get(
-          `?apiKey=${API_KEY}&s=${searchQuery}&type=movie`
-        );
+        const response = await apiClient.get(`?apiKey=${API_KEY}&i=${imdbID}`);
         dispatch(setData(response.data));
         dispatch(setLoading(false));
       } catch (error: any) {
@@ -24,9 +24,9 @@ function useMovies(searchQuery: string) {
       }
     };
     fetchData();
-  }, [dispatch, searchQuery]);
+  }, [dispatch, imdbID]);
 
   return { data, error, loading };
 }
 
-export default useMovies;
+export default useDetail;

@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setData, setError, setLoading } from '../redux/slices/showsSlice';
+import { setData, setError, setLoading } from '../redux/slices/movieSlice';
 import apiClient from '../services/api-client';
 
-function useShows(searchQuery: string) {
+function useData(searchQuery: string, type: string) {
   const dispatch = useDispatch();
-  const { loading, error, data } = useSelector((state: any) => state.shows);
+  const { loading, error, data } = useSelector((state: any) => state.movies);
   const API_KEY = import.meta.env.VITE_API_KEY;
 
   useEffect(() => {
@@ -13,7 +13,7 @@ function useShows(searchQuery: string) {
       try {
         dispatch(setLoading(true));
         const response = await apiClient.get(
-          `?apiKey=${API_KEY}&s=${searchQuery}&type=series`
+          `?apiKey=${API_KEY}&s=${searchQuery}&type=${type}`
         );
         dispatch(setData(response.data));
         dispatch(setLoading(false));
@@ -29,4 +29,4 @@ function useShows(searchQuery: string) {
   return { data, error, loading };
 }
 
-export default useShows;
+export default useData;

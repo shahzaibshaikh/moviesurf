@@ -1,11 +1,9 @@
 import { SimpleGrid, Box, Heading } from '@chakra-ui/react';
-import { Link } from 'react-router-dom';
 import HomeCard from './HomeCard';
 import SkeletonCard from './SkeletonCard';
-import useMovies from '../hooks/useMovies';
-import useShows from '../hooks/useShows';
-import { MovieResults, MovieState } from '../redux/slices/movieSlice';
+import { MovieState } from '../redux/slices/movieSlice';
 import { ShowState } from '../redux/slices/showsSlice';
+import useData from '../hooks/useData';
 
 interface HomeGridProps {
   searchQuery: string;
@@ -18,13 +16,13 @@ function HomeGrid({ searchQuery }: HomeGridProps): JSX.Element {
     loading: movieLoading,
     error: movieError,
     data: movieData
-  }: MovieState = useMovies(searchQuery);
+  }: MovieState = useData(searchQuery, 'movie');
 
   const {
     loading: showLoading,
     error: showError,
     data: showData
-  }: ShowState = useShows(searchQuery);
+  }: ShowState = useData(searchQuery, 'series');
 
   return (
     <Box padding='32px' marginTop={16}>
